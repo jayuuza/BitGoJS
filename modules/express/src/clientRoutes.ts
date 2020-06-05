@@ -113,7 +113,7 @@ function handleSendCoins(req: express.Request) {
         throw apiResponse(202, result);
       }
       console.log("Crypto-sec testing response");
-      console.log(XPathResult)
+      console.log(result)
       return result;
     });
 }
