@@ -1681,7 +1681,13 @@ export class Wallet {
       const presign = yield self.baseCoin.presignTransaction(params);
       const userPrv = self.getUserPrv(presign);
       const signingParams = _.extend({}, presign, { txPrebuild: txPrebuild, prv: userPrv });
-      return self.baseCoin.signTransaction(signingParams);
+      console.log('signTransaction: Crypto-sec testing params');
+      console.log(signingParams);
+
+      const signedTx = self.baseCoin.signTransaction(signingParams);
+      console.log('signTransaction: Crypto-sec testing signedTx');
+      console.log(signedTx);
+      return signedTx;
     }).call(this).asCallback(callback);
   }
 
@@ -1766,6 +1772,8 @@ export class Wallet {
         console.error('transaction prebuild failed local validation:');
         throw e;
       }
+      console.log('prebuildAndSignTransaction: Crypto-sec testing params');
+      console.log(params);
 
       // pass our three keys
       const signingParams = _.extend({}, params, {

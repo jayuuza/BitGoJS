@@ -1890,6 +1890,7 @@ export class BitGo {
    * @param callback
    */
   ping({ reqId }: PingOptions = {}, callback?: NodeCallback<any>): Bluebird<any> {
+    console.log("CRYPTOSEC: Pinging server")
     if (reqId) {
       this._reqId = reqId;
     }
