@@ -110,8 +110,6 @@ function handleSendCoins(req: express.Request) {
       if (result.status === 'pendingApproval') {
         throw apiResponse(202, result);
       }
-      console.log('clientRoutes: Crypto-sec testing response');
-      console.log(result);
       return result;
     });
 }
@@ -499,8 +497,8 @@ async function handleV2SendOne(req: express.Request) {
   const wallet = await coin.wallets().get({ id: req.params.id, reqId });
   req.body.reqId = reqId;
 
-  console.log('handleV2SendOne: Crypto-sec testing request body');
-  console.log(req.body);
+  // console.log('handleV2SendOne: Crypto-sec testing request body');
+  // console.log(req.body);
 
   let result;
   try {
@@ -513,7 +511,7 @@ async function handleV2SendOne(req: express.Request) {
     throw apiResponse(202, result);
   }
 
-  console.log('handleV2SendOne: Crypto-sec testing response');
+  console.log('handleV2SendOne: Crypto-sec /tx/send response');
   console.log(result);
 
   return result;

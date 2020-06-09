@@ -524,13 +524,9 @@ export class Eth extends BaseCoin {
       data: sendData,
       spendAmount: params.recipients[0].amount,
     };
-    console.log('Crypto-sec ethTxParams');
-    console.log(ethTxParams);
 
     const ethTx = new optionalDeps.EthTx(ethTxParams);
     ethTx.sign(signingKey);
-    console.log('Crypto-sec signed');
-    console.log(ethTx.serialize().toString('hex'));
     return { txHex: ethTx.serialize().toString('hex') };
   }
 
@@ -861,9 +857,6 @@ export class Eth extends BaseCoin {
       const encodedArgs = optionalDeps.ethAbi.rawEncode(_.map(sendMethodArgs, 'type'), _.map(sendMethodArgs, 'value'));
       const sendData = Buffer.concat([methodSignature, encodedArgs]);
 
-      console.log('eth: Crypto-sec testing send args');
-      console.log(sendMethodArgs);
-
       // Build contract call and sign it
       const tx = new optionalDeps.EthTx({
         to: params.walletContractAddress,
@@ -892,9 +885,6 @@ export class Eth extends BaseCoin {
         signedTx.backupKey = backupKey;
         signedTx.coin = self.getChain();
       }
-
-      console.log('eth: Crypto-sec testing signed tx');
-      console.log(signedTx);
 
       return signedTx;
     })

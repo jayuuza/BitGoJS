@@ -1772,8 +1772,8 @@ export class Wallet {
         console.error('transaction prebuild failed local validation:');
         throw e;
       }
-      console.log('prebuildAndSignTransaction: Crypto-sec testing params');
-      console.log(params);
+      // console.log('prebuildAndSignTransaction: Crypto-sec testing params');
+      // console.log(txPrebuild);
 
       // pass our three keys
       const signingParams = _.extend({}, params, {
@@ -2000,6 +2000,8 @@ export class Wallet {
         'instant', 'memo', 'type', 'trustlines',
       ]);
       const finalTxParams = _.extend({}, halfSignedTransaction, selectParams);
+      console.log('sendMany: Crypto-sec testing /tx/send request');
+      console.log(finalTxParams);
       self.bitgo.setRequestTracer(reqId);
       return self.bitgo.post(self.url('/tx/send'))
         .send(finalTxParams)
